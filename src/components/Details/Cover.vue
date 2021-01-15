@@ -2,7 +2,7 @@
   <div
     id="cover"
     :style="{
-      background: `url('${img}')`,
+      background: `url('${img}') no-repeat`,
     }"
   />
 </template>

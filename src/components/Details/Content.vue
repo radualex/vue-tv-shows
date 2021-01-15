@@ -69,6 +69,10 @@ export default {
       text-align: left;
 
       color: #1f2229;
+
+      @media screen and (max-width: 600px) {
+        font-size: 14px;
+      }
     }
   }
 }
