@@ -13,7 +13,7 @@
 
 #app {
   font-family: "Mulish", sans-serif;
-  text-align: center;
+  // text-align: center;
   color: var(--font-color);
 
   display: flex;
