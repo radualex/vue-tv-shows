@@ -28,6 +28,10 @@ export default {
   align-items: center;
   width: 100%;
 
+  @media screen and (max-width: 600px) {
+    height: 100%;
+  }
+
   .tile-wrapper {
     padding: 8px 0 8px 0;
     overflow-x: scroll;
@@ -41,7 +45,10 @@ export default {
       overflow-x: hidden;
       overflow-y: scroll;
       max-height: none;
-      height: 55vh;
+      height: 50vh;
+      width: 100%;
+      align-items: center;
+      padding: 0 8px;
     }
   }
 }

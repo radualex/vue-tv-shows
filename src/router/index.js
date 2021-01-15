@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Show from "../views/Show.vue";
-import Details from "../views/Details.vue";
+import Show from "../views/Show.vue";
+// import Details from "../views/Details.vue";
 
 Vue.use(VueRouter);
 
@@ -9,7 +9,7 @@ const routes = [
   {
     path: "/",
     name: "Show",
-    component: Details,
+    component: Show,
   },
   {
     path: "/details",

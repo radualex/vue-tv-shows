@@ -62,6 +62,11 @@ export default {
   flex-direction: column;
   align-items: baseline;
 
+  @media screen and (max-width: 600px) {
+    width: calc(100vw - 100px);
+    height: calc(100vh - 80px);
+  }
+
   .search {
     width: 100%;
     margin: 0 0 24px 0;
@@ -70,7 +75,8 @@ export default {
   .genres {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: 12px;
+    flex-flow: wrap;
     margin: 15px 0 30px 0;
   }
 }
