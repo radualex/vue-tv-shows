@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "Label",
   props: {
-    text: String,
-  },
+    text: String
+  }
 };
 </script>
 

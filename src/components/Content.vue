@@ -15,16 +15,16 @@
 
 <script>
 import Title from "./Title.vue";
-import { Months } from "../utils/constants.js";
+import { Months } from "./utils/constants.js";
 
 export default {
   name: "Content",
   components: {
-    Title,
+    Title
   },
   props: {
     summary: String,
-    date: String,
+    date: String
   },
   methods: {
     formattedDate(date) {
@@ -33,13 +33,13 @@ export default {
       const day = currentDate.getDate();
       const year = currentDate.getFullYear();
       return `${day}-${month}-${year}`;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
-@import "../../mixins/mixins.scss";
+@import "../mixins/mixins.scss";
 
 #wrapper {
   display: flex;

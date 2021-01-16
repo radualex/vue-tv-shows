@@ -12,37 +12,37 @@
 </template>
 
 <script>
-import { showSearch } from "../utils/TvShowsAPI.js";
+import { showSearch } from "./utils/TvShowsAPI.js";
 import {
   pluck,
   filter,
   debounceTime,
   distinctUntilChanged,
   switchMap,
-  map,
+  map
 } from "rxjs/operators";
 
-import { mapDataArray, filterOnRating } from "../utils/helpers.js";
+import { mapDataArray, filterOnRating } from "./utils/helpers.js";
 
 export default {
   name: "Search",
   data() {
     return {
-      searchTerm: "",
+      searchTerm: ""
     };
   },
   created() {
     this.$watchAsObservable("searchTerm")
       .pipe(
         pluck("newValue"),
-        filter((text) => text.length > 2),
+        filter(text => text.length > 2),
         debounceTime(500),
         distinctUntilChanged(),
         switchMap(showSearch),
-        map((res) => mapDataArray(filterOnRating(res)))
+        map(res => mapDataArray(filterOnRating(res)))
       )
-      .subscribe((data) => this.$emit("searchData", data));
-  },
+      .subscribe(data => this.$emit("searchData", data));
+  }
 };
 </script>
 

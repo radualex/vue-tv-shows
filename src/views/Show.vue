@@ -2,7 +2,7 @@
   <div class="container">
     <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
-    <Header text="Popular searches" />
+    <Label text="Popular searches" />
     <div class="words">
       <Tag
         v-for="(tag, index) in tags"
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import Search from "@/components/Show/Search.vue";
-import Separator from "@/components/Show/Separator.vue";
-import Header from "@/components/Show/Header.vue";
-import Tag from "@/components/Show/Tag.vue";
-import Scrollable from "@/components/Show/Scrollable.vue";
+import Search from "@/components/Search.vue";
+import Separator from "@/components/Separator.vue";
+import Label from "@/components/Label.vue";
+import Tag from "@/components/Tag.vue";
+import Scrollable from "@/components/Scrollable.vue";
 
 import { showSearch } from "../components/utils/TvShowsAPI.js";
 import { mapDataArray } from "../components/utils/helpers.js";
@@ -31,9 +31,9 @@ export default {
   components: {
     Search,
     Separator,
-    Header,
+    Label,
     Tag,
-    Scrollable,
+    Scrollable
   },
   data() {
     return {
@@ -42,9 +42,9 @@ export default {
         { word: "Suits", color: "#F4F3FD" },
         { word: "Game of Thrones", color: "#ffb946" },
         { word: "The Queen's Gambit", color: "#468cff" },
-        { word: "Friends", color: "#e9ff46" },
+        { word: "Friends", color: "#e9ff46" }
       ],
-      items: [],
+      items: []
     };
   },
   methods: {
@@ -55,12 +55,12 @@ export default {
       this.updateItems(event);
     },
     updateItems(term) {
-      showSearch(term).then((data) => (this.$data.items = mapDataArray(data)));
-    },
+      showSearch(term).then(data => (this.$data.items = mapDataArray(data)));
+    }
   },
   mounted() {
     this.updateItems("suits");
-  },
+  }
 };
 </script>
 

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Separator",
+  name: "Separator"
 };
 </script>
 

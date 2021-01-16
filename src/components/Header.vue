@@ -10,8 +10,8 @@ export default {
   name: "Header",
   props: {
     title: String,
-    rating: String,
-  },
+    rating: String
+  }
 };
 </script>
 

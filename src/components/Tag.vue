@@ -9,13 +9,13 @@ export default {
   name: "Tag",
   props: {
     text: String,
-    color: String,
+    color: String
   },
   methods: {
     handleOnClick() {
       this.$emit("tagClicked", this.$props.text);
-    },
-  },
+    }
+  }
 };
 </script>
 

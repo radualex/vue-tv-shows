@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import Header from "@/components/Details/Header.vue";
-import Cover from "@/components/Details/Cover.vue";
-import Content from "@/components/Details/Content.vue";
+import Header from "@/components/Header.vue";
+import Cover from "@/components/Cover.vue";
+import Content from "@/components/Content.vue";
 
 import { showLookup } from "../components/utils/TvShowsAPI.js";
 import { mapShowItem } from "../components/utils/helpers.js";
@@ -34,7 +34,7 @@ export default {
   components: {
     Header,
     Cover,
-    Content,
+    Content
   },
   computed: {
     rating() {
@@ -43,23 +43,23 @@ export default {
       } else {
         return "N/A";
       }
-    },
+    }
   },
   data() {
     return {
-      item: null,
+      item: null
     };
   },
   methods: {
     navigateTo() {
       this.$router.push("/");
-    },
+    }
   },
   mounted() {
     showLookup(this.$route.params.id).then(
-      (data) => (this.$data.item = mapShowItem(data))
+      data => (this.$data.item = mapShowItem(data))
     );
-  },
+  }
 };
 </script>
 

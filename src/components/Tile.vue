@@ -5,7 +5,7 @@
         v-if="cover"
         id="image"
         :style="{
-          background: `linear-gradient(180deg, rgba(25, 25, 38, 0.0001) 42.31%, #191926 87.5%), url('${cover}')`,
+          background: `linear-gradient(180deg, rgba(25, 25, 38, 0.0001) 42.31%, #191926 87.5%), url('${cover}')`
         }"
       />
       <img
@@ -35,13 +35,13 @@ export default {
     cover: String,
     genres: Array,
     name: String,
-    networkName: String,
+    networkName: String
   },
   methods: {
     navigateTo() {
       this.$router.push(`/details/${this.$props.id}`);
-    },
-  },
+    }
+  }
 };
 </script>
 

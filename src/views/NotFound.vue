@@ -9,8 +9,8 @@
 export default {
   name: "NotFound",
   props: {
-    msg: String,
+    msg: String
   },
-  components: {},
+  components: {}
 };
 </script>

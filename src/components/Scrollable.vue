@@ -19,16 +19,16 @@ import Tile from "./Tile";
 export default {
   name: "Scrollable",
   components: {
-    Tile,
+    Tile
   },
   props: {
-    shows: Array,
-  },
+    shows: Array
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../mixins/mixins.scss";
+@import "../mixins/mixins.scss";
 
 .scrollable-container {
   display: flex;
