@@ -1,12 +1,15 @@
 <template>
   <div class="scrollable-container">
     <div class="tile-wrapper">
-      <!-- <Tile v-for="item in items" v-bind:key="item.id" :item="item" /> -->
-      <Tile />
-      <Tile />
-      <Tile />
-      <Tile />
-      <Tile />
+      <Tile
+        v-for="show in shows"
+        v-bind:key="show.id"
+        :id="show.id"
+        :genres="show.genres"
+        :cover="show.image"
+        :name="show.name"
+        :networkName="show.network"
+      />
     </div>
   </div>
 </template>
@@ -18,7 +21,9 @@ export default {
   components: {
     Tile,
   },
-  props: ["items"],
+  props: {
+    shows: Array,
+  },
 };
 </script>
 

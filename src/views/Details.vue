@@ -1,19 +1,33 @@
 <template>
-  <div id="container">
-    <i class="material-icons">west</i>
+  <div id="container" v-if="item">
+    <i class="material-icons" v-on:click="navigateTo">west</i>
     <Header id="header" :title="item.name" :rating="rating" />
     <div id="contentWrapper">
-      <Cover id="cover" :img="item.image.medium" />
-      <Content class="content" :summary="item.summary" :date="item.premiered" />
+      <Cover id="cover" :img="item.image" />
+      <Content
+        class="content"
+        :summary="item.summary"
+        :date="item.releaseDate"
+      />
     </div>
+  </div>
+  <div id="container" v-else>
+    <i class="material-icons" v-on:click="navigateTo">west</i>
+    <Header
+      id="header"
+      title="Something went wrong. Please go back."
+      :style="{ marginBottom: '0px' }"
+    />
   </div>
 </template>
 
 <script>
-import { detailItem } from "./test.js";
 import Header from "@/components/Details/Header.vue";
 import Cover from "@/components/Details/Cover.vue";
 import Content from "@/components/Details/Content.vue";
+
+import { showLookup } from "../components/utils/TvShowsAPI.js";
+import { mapShowItem } from "../components/utils/helpers.js";
 
 export default {
   name: "Details",
@@ -24,13 +38,23 @@ export default {
   },
   computed: {
     rating() {
-      return this.item.rating.average || "N/A";
+      return this.item.rating || "N/A";
     },
   },
   data() {
     return {
-      item: detailItem,
+      item: null,
     };
+  },
+  methods: {
+    navigateTo() {
+      this.$router.push("/");
+    },
+  },
+  mounted() {
+    showLookup(this.$route.params.id).then(
+      (data) => (this.$data.item = mapShowItem(data))
+    );
   },
 };
 </script>
@@ -40,7 +64,6 @@ export default {
 
 #container {
   width: 55vw;
-  // height: 385px;
   padding: 64px 52px;
 
   background: var(--card-background-color);

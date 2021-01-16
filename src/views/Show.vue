@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Search class="search" />
+    <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
     <Header text="Popular searches" />
     <div class="genres">
@@ -11,7 +11,7 @@
         :color="tag.color"
       />
     </div>
-    <Scrollable />
+    <Scrollable :shows="items" />
   </div>
 </template>
 
@@ -41,7 +41,13 @@ export default {
         { genre: "Friends", color: "#ffb946" },
         { genre: "The Bing Bang Theory", color: "#ffb946" },
       ],
+      items: [],
     };
+  },
+  methods: {
+    handleSearchData(event) {
+      this.$data.items = event;
+    },
   },
 };
 </script>
@@ -51,7 +57,6 @@ export default {
 
 .container {
   width: 55vw;
-  // height: 385px;
 
   background: var(--card-background-color);
   box-shadow: 0px 18px 40px -20px rgba(20, 26, 133, 0.203835);

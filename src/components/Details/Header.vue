@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <span id="title">{{ title }}</span>
-    <span id="rating">{{ rating }}/10</span>
+    <span v-if="rating" id="rating">{{ rating }}/10</span>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   name: "Header",
   props: {
     title: String,
-    rating: String,
+    rating: Number,
   },
 };
 </script>
