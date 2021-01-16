@@ -65,6 +65,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/css/style.scss";
+@import "../mixins/mixins.scss";
 
 #container {
   width: 55vw;
@@ -74,8 +75,7 @@ export default {
   box-shadow: 0px 18px 40px -20px rgba(20, 26, 133, 0.203835);
   position: relative;
 
-  // TODO: move the pixels to assets
-  @media screen and (max-width: 600px) {
+  @include respond(tablet) {
     width: calc(100vw - 104px);
     height: calc(100vh - 128px);
     overflow-y: scroll;
@@ -99,7 +99,7 @@ export default {
   #header {
     margin-bottom: 55px;
 
-    @media screen and (max-width: 600px) {
+    @include respond(tablet) {
       margin-bottom: 12px;
     }
   }
@@ -107,7 +107,7 @@ export default {
   #contentWrapper {
     display: flex;
 
-    @media screen and (max-width: 600px) {
+    @include respond(tablet) {
       flex-direction: column;
       align-items: center;
     }
@@ -116,7 +116,7 @@ export default {
       margin-right: 32px;
       width: 35%;
 
-      @media screen and (max-width: 600px) {
+      @include respond(tablet) {
         width: 100%;
       }
     }
@@ -124,7 +124,7 @@ export default {
     .content {
       width: 65%;
 
-      @media screen and (max-width: 600px) {
+      @include respond(tablet) {
         width: 100%;
         margin: 12px 0 0 0;
       }

@@ -66,6 +66,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/css/style.scss";
+@import "../mixins/mixins.scss";
 
 .container {
   width: 55vw;
@@ -79,7 +80,7 @@ export default {
   flex-direction: column;
   align-items: baseline;
 
-  @media screen and (max-width: 600px) {
+  @include respond(tablet) {
     width: calc(100vw - 100px);
     height: calc(100vh - 80px);
   }

@@ -28,12 +28,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../mixins/mixins.scss";
+
 .scrollable-container {
   display: flex;
   align-items: center;
   width: 100%;
 
-  @media screen and (max-width: 600px) {
+  @include respond(tablet) {
     height: 100%;
   }
 
@@ -45,7 +47,7 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 24px;
-    @media screen and (max-width: 600px) {
+    @include respond(tablet) {
       flex-direction: column;
       overflow-x: hidden;
       overflow-y: scroll;

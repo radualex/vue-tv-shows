@@ -1,10 +1,12 @@
 <template>
   <div
+    v-if="img"
     id="cover"
     :style="{
       background: `url('${img}') no-repeat`,
     }"
   />
+  <img v-else id="cover" src="https://via.placeholder.com/500" alt="" />
 </template>
 
 <script>

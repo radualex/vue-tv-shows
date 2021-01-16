@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../mixins/mixins.scss";
+
 #wrapper {
   display: flex;
 
@@ -56,7 +58,7 @@ export default {
 
       color: #1f2229;
 
-      @media screen and (max-width: 600px) {
+      @include respond(tablet) {
         font-size: 14px;
       }
     }

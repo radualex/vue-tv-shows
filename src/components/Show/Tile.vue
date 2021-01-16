@@ -2,10 +2,17 @@
   <div id="wrapper" v-on:click="navigateTo">
     <div id="cover">
       <div
+        v-if="cover"
         id="image"
         :style="{
           background: `linear-gradient(180deg, rgba(25, 25, 38, 0.0001) 42.31%, #191926 87.5%), url('${cover}')`,
         }"
+      />
+      <img
+        v-if="!cover"
+        id="image"
+        src="https://via.placeholder.com/200"
+        alt=""
       />
       <div id="genres">
         <span v-for="(genre, index) in genres" :key="`genre-${index}`"

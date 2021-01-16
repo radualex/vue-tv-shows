@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Show</router-link> |
-      <router-link to="/details">Details</router-link>
-    </div> -->
     <router-view />
   </div>
 </template>
@@ -13,7 +9,6 @@
 
 #app {
   font-family: "Mulish", sans-serif;
-  // text-align: center;
   color: var(--font-color);
 
   display: flex;
