@@ -38,7 +38,11 @@ export default {
   },
   computed: {
     rating() {
-      return this.item.rating || "N/A";
+      if (this.item.rating) {
+        return `${this.item.rating}/10`;
+      } else {
+        return "N/A";
+      }
     },
   },
   data() {

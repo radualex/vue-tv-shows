@@ -11,7 +11,6 @@ export function filterOnRating(data) {
 }
 
 export function mapShowItem(item) {
-  console.log(item);
   return {
     id: item.id,
     show: item.name,

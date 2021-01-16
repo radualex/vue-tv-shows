@@ -1,5 +1,7 @@
 <template>
-  <span v-bind:style="{ background: color }">{{ text }}</span>
+  <span v-bind:style="{ background: color }" v-on:click="handleOnClick">{{
+    text
+  }}</span>
 </template>
 
 <script>
@@ -8,6 +10,11 @@ export default {
   props: {
     text: String,
     color: String,
+  },
+  methods: {
+    handleOnClick() {
+      this.$emit("tagClicked", this.$props.text);
+    },
   },
 };
 </script>

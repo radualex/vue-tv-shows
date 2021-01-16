@@ -3,12 +3,13 @@
     <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
     <Header text="Popular searches" />
-    <div class="genres">
+    <div class="words">
       <Tag
         v-for="(tag, index) in tags"
         :key="index"
-        :text="tag.genre"
+        :text="tag.word"
         :color="tag.color"
+        @tagClicked="handleTagClick($event)"
       />
     </div>
     <Scrollable :shows="items" />
@@ -22,6 +23,9 @@ import Header from "@/components/Show/Header.vue";
 import Tag from "@/components/Show/Tag.vue";
 import Scrollable from "@/components/Show/Scrollable.vue";
 
+import { showSearch } from "../components/utils/TvShowsAPI.js";
+import { mapDataArray } from "../components/utils/helpers.js";
+
 export default {
   name: "Show",
   components: {
@@ -34,12 +38,11 @@ export default {
   data() {
     return {
       tags: [
-        { genre: "Top Gear", color: "#E6F6F2" },
-        { genre: "Suits", color: "#F4F3FD" },
-        { genre: "Game of Thrones", color: "#ffb946" },
-        { genre: "The Queen's Gambit", color: "#ffb946" },
-        { genre: "Friends", color: "#ffb946" },
-        { genre: "The Bing Bang Theory", color: "#ffb946" },
+        { word: "Top Gear", color: "#E6F6F2" },
+        { word: "Suits", color: "#F4F3FD" },
+        { word: "Game of Thrones", color: "#ffb946" },
+        { word: "The Queen's Gambit", color: "#468cff" },
+        { word: "Friends", color: "#e9ff46" },
       ],
       items: [],
     };
@@ -48,6 +51,15 @@ export default {
     handleSearchData(event) {
       this.$data.items = event;
     },
+    handleTagClick(event) {
+      this.updateItems(event);
+    },
+    updateItems(term) {
+      showSearch(term).then((data) => (this.$data.items = mapDataArray(data)));
+    },
+  },
+  mounted() {
+    this.updateItems("suits");
   },
 };
 </script>
@@ -77,7 +89,7 @@ export default {
     margin: 0 0 24px 0;
   }
 
-  .genres {
+  .words {
     width: 100%;
     display: flex;
     gap: 12px;

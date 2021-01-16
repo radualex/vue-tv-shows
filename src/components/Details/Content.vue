@@ -15,6 +15,7 @@
 
 <script>
 import Title from "./Title.vue";
+import { Months } from "../utils/constants.js";
 
 export default {
   name: "Content",
@@ -27,23 +28,8 @@ export default {
   },
   methods: {
     formattedDate(date) {
-      const months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ];
-
       const currentDate = new Date(date);
-      const month = months[currentDate.getMonth()];
+      const month = Months[currentDate.getMonth()];
       const day = currentDate.getDate();
       const year = currentDate.getFullYear();
       return `${day}-${month}-${year}`;
