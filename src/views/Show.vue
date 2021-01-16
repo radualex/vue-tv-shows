@@ -3,16 +3,16 @@
     <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
     <Label text="Popular searches" />
-    <div class="words">
+    <div class="genres">
       <Tag
         v-for="(tag, index) in tags"
         :key="index"
-        :text="tag.word"
+        :text="tag.genre"
         :color="tag.color"
         @tagClicked="handleTagClick($event)"
       />
     </div>
-    <Scrollable :shows="items" />
+    <Scrollable :shows="filteredItems" />
   </div>
 </template>
 
@@ -38,28 +38,44 @@ export default {
   data() {
     return {
       tags: [
-        { word: "Top Gear", color: "#E6F6F2" },
-        { word: "Suits", color: "#F4F3FD" },
-        { word: "Game of Thrones", color: "#ffb946" },
-        { word: "The Queen's Gambit", color: "#468cff" },
-        { word: "Friends", color: "#e9ff46" }
+        { genre: "Drama", color: "#E6F6F2" },
+        { genre: "Comedy", color: "#F4F3FD" },
+        { genre: "Romance", color: "#ffb946" },
+        { genre: "Legal", color: "#468cff" },
+        { genre: "Thriller", color: "#e9ff46" }
       ],
-      items: []
+      items: [],
+      selectedTag: null
     };
   },
+  computed: {
+    filteredItems() {
+      if (this.$data.selectedTag) {
+        return this.$data.items.filter(item =>
+          item.genres.includes(this.$data.selectedTag)
+        );
+      }
+
+      return this.$data.items;
+    }
+  },
   methods: {
+    resetSelectedTag() {
+      this.$data.selectedTag = null;
+    },
     handleSearchData(event) {
+      this.resetSelectedTag();
       this.$data.items = event;
     },
     handleTagClick(event) {
-      this.updateItems(event);
-    },
-    updateItems(term) {
-      showSearch(term).then(data => (this.$data.items = mapDataArray(data)));
+      this.$data.selectedTag = event;
     }
   },
   mounted() {
-    this.updateItems("suits");
+    showSearch("suits").then(data => {
+      this.resetSelectedTag();
+      this.$data.items = mapDataArray(data);
+    });
   }
 };
 </script>
@@ -90,7 +106,7 @@ export default {
     margin: 0 0 24px 0;
   }
 
-  .words {
+  .genres {
     width: 100%;
     display: flex;
     gap: 12px;

@@ -32,4 +32,23 @@ describe("Show.vue", () => {
     const wrapper = shallowMount(Show, {});
     expect(wrapper.findComponent(Scrollable)).toBeTruthy();
   });
+
+  it("should have filtered data", () => {
+    const items = [
+      {
+        genres: ["Drama", "Action"]
+      },
+      {
+        genres: ["Action"]
+      }
+    ];
+
+    const selectedTag = "Drama";
+    const wrapper = shallowMount(Show);
+
+    wrapper.setData({ items, selectedTag });
+
+    expect(wrapper.vm.filteredItems.length).toBe(1);
+    expect(wrapper.vm.filteredItems[0]).toBe(items[0]);
+  });
 });
