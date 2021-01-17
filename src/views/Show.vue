@@ -68,7 +68,11 @@ export default {
       this.$data.items = event;
     },
     handleTagClick(event) {
-      this.$data.selectedTag = event;
+      if (event === this.$data.selectedTag) {
+        this.resetSelectedTag();
+      } else {
+        this.$data.selectedTag = event;
+      }
     }
   },
   mounted() {
