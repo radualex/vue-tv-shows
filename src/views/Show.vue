@@ -2,13 +2,14 @@
   <div class="container">
     <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
-    <Label text="Popular searches" />
+    <Label text="Genres" />
     <div class="genres">
       <Tag
         v-for="(tag, index) in tags"
         :key="index"
         :text="tag.genre"
         :color="tag.color"
+        :isSelected="selectedTag === tag.genre"
         @tagClicked="handleTagClick($event)"
       />
     </div>

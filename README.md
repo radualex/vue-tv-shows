@@ -51,7 +51,6 @@ I am using a layered architecture in this app. The top layer is the router, next
 ## Possible improvements
 
 - Finish the unit testing. Bring it to at least 80% coverage.
-- Highlight the selected tag. There's no feedback at the moment other than the data being changed in the scrollable.
 - The close ('x') button on the search does not work accordingly.
 
 ## Responsive view

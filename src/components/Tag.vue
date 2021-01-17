@@ -1,7 +1,10 @@
 <template>
-  <span v-bind:style="{ background: color }" v-on:click="handleOnClick">{{
-    text
-  }}</span>
+  <span
+    v-bind:style="{ background: color }"
+    v-bind:class="isSelected ? 'active' : ''"
+    v-on:click="handleOnClick"
+    >{{ text }}</span
+  >
 </template>
 
 <script>
@@ -9,7 +12,8 @@ export default {
   name: "Tag",
   props: {
     text: String,
-    color: String
+    color: String,
+    isSelected: Boolean
   },
   methods: {
     handleOnClick() {
@@ -20,6 +24,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.active {
+  border: 1px solid black;
+}
+
 span {
   padding: 9px 15px 9px 13px;
   background: #f9effa;
