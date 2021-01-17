@@ -40,18 +40,17 @@ Run `npm run test:unit` to execute the unit tests via [Jest](https://jestjs.io/)
 
 # Design decision
 
-The structure is quite simple and straight-forward. The idea is to use a `views` folder for the components which are used by the router and the `components` folder for the reusable components. In total there are 3 views: Show (main one), Details (lazy loaded) and the NotFound for redirecting wrong urls. Each view makes use of the reusable components to build the page. There are 10 reusable components available as well, which are not separated in sub-folder due to the small size of the project.
+The structure is quite simple and straight-forward. The idea is to use a `views` folder for the components which are used by the router and the `components` folder for the building blocks. In total there are 3 views: Show (main one), Details (lazy loaded) and the NotFound for redirecting wrong urls. Each view makes use of the building blocks to build the page.
 
 While working I am trying as much as possible not to repeat my code and to make the components reusable and extendable.
 
-Also, I am trying not to overload the projects with too many libraries and make them heavy. This is why I haven't chosen to use a centralized state management library such as Vuex and to use event emitters and propagation for handling data among components due to the project size and complexity.
+Also, I am trying not to overload the projects with too many libraries and make the application heavy. This is why I haven't chosen to use a centralized state management library such as Vuex and to use event emitters and propagation instead for handling data among components due to the project size and complexity.
 
-I am using a layered architecture in this app. The top layer is the router, next we have the API layer and the next is views/components (UI). I bring the data to the views and use them as state tree (root) and then propagate the data to the components (top-to-bottom approach). For example `Search` component emits the data upwards towards the `Show` view and the data is being propagated to the other components while in `Details` I make the call directly in the view component.
+I am using a layered architecture in this app. The top layer is the router, the next layer is the respective view. I bring the data to the views and use them as state tree (root) and then propagate the data to the components (top-to-bottom approach). For example `Search` component emits the data upwards towards the `Show` view and the data is being propagated to the other components while in `Details` I make the call directly in the view component.
 
 ## Possible improvements
 
 - Finish the unit testing. Bring it to at least 80% coverage.
-- The close ('x') button on the search does not work accordingly.
 
 ## Responsive view
 

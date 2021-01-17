@@ -69,6 +69,11 @@ $borderRadius: 8px;
       object-fit: cover;
       border-top-left-radius: $borderRadius;
       border-top-right-radius: $borderRadius;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
     }
     #genres {
       position: absolute;
