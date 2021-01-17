@@ -42,6 +42,9 @@ export default {
         map(res => mapDataArray(filterOnRating(res)))
       )
       .subscribe(data => this.$emit("searchData", data));
+  },
+  mounted() {
+    this.$data.searchTerm = "suits";
   }
 };
 </script>

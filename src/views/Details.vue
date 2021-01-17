@@ -1,5 +1,5 @@
 <template>
-  <div id="container" v-if="item">
+  <Container v-if="item">
     <i class="material-icons" v-on:click="navigateTo">west</i>
     <Header id="header" :title="item.name" :rating="rating" />
     <div id="contentWrapper">
@@ -10,18 +10,19 @@
         :date="item.releaseDate"
       />
     </div>
-  </div>
-  <div id="container" v-else>
+  </Container>
+  <Container v-else>
     <i class="material-icons" v-on:click="navigateTo">west</i>
     <Header
       id="header"
       title="Something went wrong. Please go back."
       :style="{ marginBottom: '0px' }"
     />
-  </div>
+  </Container>
 </template>
 
 <script>
+import Container from "@/components/Container.vue";
 import Header from "@/components/Header.vue";
 import Cover from "@/components/Cover.vue";
 import Content from "@/components/Content.vue";
@@ -32,6 +33,7 @@ import { mapShowItem } from "../components/utils/helpers.js";
 export default {
   name: "Details",
   components: {
+    Container,
     Header,
     Cover,
     Content
@@ -67,67 +69,52 @@ export default {
 @import "../assets/css/style.scss";
 @import "../mixins/mixins.scss";
 
-#container {
-  width: 55vw;
-  padding: 64px 52px;
+i {
+  position: absolute;
+  top: 2rem;
+  user-select: none;
 
-  background: var(--card-background-color);
-  box-shadow: 0px 18px 40px -20px rgba(20, 26, 133, 0.203835);
-  position: relative;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+#header {
+  margin-bottom: 55px;
 
   @include respond(tablet) {
-    width: calc(100vw - 104px);
-    height: calc(100vh - 128px);
-    overflow-y: scroll;
+    margin-bottom: 12px;
+  }
+}
+
+#contentWrapper {
+  display: flex;
+
+  @include respond(tablet) {
+    flex-direction: column;
+    align-items: center;
   }
 
-  i {
-    position: absolute;
-    top: 2rem;
-    user-select: none;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.6;
-    }
-
-    &:active {
-      opacity: 0.8;
-    }
-  }
-
-  #header {
-    margin-bottom: 55px;
+  #cover {
+    margin-right: 32px;
+    width: 35%;
 
     @include respond(tablet) {
-      margin-bottom: 12px;
+      width: 100%;
     }
   }
 
-  #contentWrapper {
-    display: flex;
+  .content {
+    width: 65%;
 
     @include respond(tablet) {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #cover {
-      margin-right: 32px;
-      width: 35%;
-
-      @include respond(tablet) {
-        width: 100%;
-      }
-    }
-
-    .content {
-      width: 65%;
-
-      @include respond(tablet) {
-        width: 100%;
-        margin: 12px 0 0 0;
-      }
+      width: 100%;
+      margin: 12px 0 0 0;
     }
   }
 }

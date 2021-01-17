@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <Container>
     <Search class="search" @searchData="handleSearchData($event)" />
     <Separator />
     <Label text="Genres" />
@@ -14,22 +14,21 @@
       />
     </div>
     <Scrollable :shows="filteredItems" />
-  </div>
+  </Container>
 </template>
 
 <script>
+import Container from "@/components/Container.vue";
 import Search from "@/components/Search.vue";
 import Separator from "@/components/Separator.vue";
 import Label from "@/components/Label.vue";
 import Tag from "@/components/Tag.vue";
 import Scrollable from "@/components/Scrollable.vue";
 
-import { showSearch } from "../components/utils/TvShowsAPI.js";
-import { mapDataArray } from "../components/utils/helpers.js";
-
 export default {
   name: "Show",
   components: {
+    Container,
     Search,
     Separator,
     Label,
@@ -75,48 +74,23 @@ export default {
         this.$data.selectedTag = event;
       }
     }
-  },
-  mounted() {
-    showSearch("suits").then(data => {
-      this.resetSelectedTag();
-      this.$data.items = mapDataArray(data);
-    });
   }
 };
 </script>
 
 <style scoped lang="scss">
 @import "../assets/css/style.scss";
-@import "../mixins/mixins.scss";
 
-.container {
-  width: 55vw;
+.search {
+  width: 100%;
+  margin: 0 0 24px 0;
+}
 
-  background: var(--card-background-color);
-  box-shadow: 0px 18px 40px -20px rgba(20, 26, 133, 0.203835);
-
-  padding: 40px 50px;
-
+.genres {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: baseline;
-
-  @include respond(tablet) {
-    width: calc(100vw - 100px);
-    height: calc(100vh - 80px);
-  }
-
-  .search {
-    width: 100%;
-    margin: 0 0 24px 0;
-  }
-
-  .genres {
-    width: 100%;
-    display: flex;
-    gap: 12px;
-    flex-flow: wrap;
-    margin: 15px 0 30px 0;
-  }
+  gap: 12px;
+  flex-flow: wrap;
+  margin: 15px 0 30px 0;
 }
 </style>

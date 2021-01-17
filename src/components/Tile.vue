@@ -1,12 +1,13 @@
 <template>
   <div id="wrapper" v-on:click="navigateTo">
     <div id="cover">
-      <div
+      <img
         v-if="cover"
         id="image"
         :style="{
           background: `linear-gradient(180deg, rgba(25, 25, 38, 0.0001) 42.31%, #191926 87.5%), url('${cover}')`
         }"
+        alt=""
       />
       <img
         v-if="!cover"

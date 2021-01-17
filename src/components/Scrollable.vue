@@ -35,10 +35,6 @@ export default {
   align-items: center;
   width: 100%;
 
-  @include respond(tablet) {
-    height: 100%;
-  }
-
   .tile-wrapper {
     padding: 8px 0 8px 0;
     overflow-x: scroll;
@@ -52,7 +48,7 @@ export default {
       overflow-x: hidden;
       overflow-y: scroll;
       max-height: none;
-      height: 50vh;
+      height: 70vh;
       width: 100%;
       align-items: center;
       padding: 0 8px;
